@@ -1,0 +1,21 @@
+{
+    "name": "lssoftware/image-downloader",
+    "type": "library",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Lssoftware\\ImageDownloader\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Łukasz Surdy",
+            "email": "lukasz72221@gmail.com"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^4.7",
+        "psr/log": "^3.0",
+        "psr/http-client": "^1.0"
+    }
+}
