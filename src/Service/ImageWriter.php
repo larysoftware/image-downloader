@@ -41,6 +41,6 @@ readonly class ImageWriter
 
     private function storeFile(ImageName $name, ContentFile $fileContent): void
     {
-        file_put_contents($this->directoryPath . DIRECTORY_SEPARATOR . $name->value, $fileContent->content);
+        file_put_contents($this->directoryPath . DIRECTORY_SEPARATOR . $name->value, $fileContent->content->value);
     }
 }
