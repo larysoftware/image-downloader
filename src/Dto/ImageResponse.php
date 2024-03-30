@@ -201,7 +201,7 @@ readonly class ImageResponse
 
     public function getImageContent(): ImageContent
     {
-        return new ImageContent((string)$this->response->getBody());
+        return new ImageContent($this->response->getBody()->getContents());
     }
 
     public function getImageDimensions(): ImageDimensions

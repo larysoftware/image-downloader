@@ -12,7 +12,7 @@ use Lssoftware\ImageDownloader\Service\ImageWriter;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-readonly class ImageDownloader
+readonly class Client
 {
 
     public function __construct(
