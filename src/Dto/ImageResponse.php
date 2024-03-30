@@ -16,6 +16,8 @@ use function getimagesizefromstring;
 
 readonly class ImageResponse
 {
+    private string $body;
+    private array $headers;
     private const CONTENT_TYPE_HEADER = 'content-type';
     private const CONTENT_LENGTH_HEADER = 'content-length';
 
@@ -194,14 +196,16 @@ readonly class ImageResponse
         'image/x.djvu' => 'djvu',
     ];
 
-    public function __construct(private ResponseInterface $response)
+    public function __construct(ResponseInterface $response)
     {
+        $this->body = $response->getBody()->getContents();
+        $this->headers = $response->getHeaders();
     }
 
 
     public function getImageContent(): ImageContent
     {
-        return new ImageContent($this->response->getBody()->getContents());
+        return new ImageContent($this->body);
     }
 
     public function getImageDimensions(): ImageDimensions
@@ -215,12 +219,12 @@ readonly class ImageResponse
 
     public function getFilesize(): ImageSize
     {
-        return new ImageSize((int)$this->response->getHeaders()[self::CONTENT_LENGTH_HEADER][0] ?? 0);
+        return new ImageSize((int)$this->headers[self::CONTENT_LENGTH_HEADER][0] ?? 0);
     }
 
     public function getContentType(): string
     {
-        return $this->response->getHeaders()[self::CONTENT_TYPE_HEADER][0] ?? '';
+        return $this->headers[self::CONTENT_TYPE_HEADER][0] ?? '';
     }
 
     /**
