@@ -1,7 +1,7 @@
 {
     "name": "lssoftware/image-downloader",
     "type": "library",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "autoload": {
         "psr-4": {
             "Lssoftware\\ImageDownloader\\": "src/"
