@@ -202,7 +202,7 @@ readonly class ImageResponse
     public function __construct(ResponseInterface $response)
     {
         $this->body = $response->getBody()->getContents();
-        $this->headers = array_change_key_case($response->getHeaders(), CASE_LOWER);
+        $this->headers = array_change_key_case($response->getHeaders());
     }
 
 
