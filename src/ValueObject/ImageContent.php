@@ -10,7 +10,7 @@ readonly class ImageContent
 {
     public function __construct(public string $value)
     {
-        if (empty($this->content)) {
+        if (empty($this->value)) {
             throw new InvalidArgumentException("file content can't be empty");
         }
     }
