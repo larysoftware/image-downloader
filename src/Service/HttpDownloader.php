@@ -10,8 +10,10 @@ use GuzzleHttp\Client;
 
 readonly class HttpDownloader
 {
-    public function __construct(private Client $client)
+    private Client $client;
+    public function __construct()
     {
+        $this->client = new Client([]);
     }
 
     public function get(string $path): ContentFile
