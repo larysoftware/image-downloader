@@ -13,6 +13,9 @@ use Lssoftware\ImageDownloader\ValueObject\ImageSize;
 use Psr\Http\Message\ResponseInterface;
 
 use function getimagesizefromstring;
+use function array_change_key_case;
+
+use const CASE_LOWER;
 
 readonly class ImageResponse
 {
@@ -199,7 +202,7 @@ readonly class ImageResponse
     public function __construct(ResponseInterface $response)
     {
         $this->body = $response->getBody()->getContents();
-        $this->headers = $response->getHeaders();
+        $this->headers = array_change_key_case($response->getHeaders(), CASE_LOWER);
     }
 
 
