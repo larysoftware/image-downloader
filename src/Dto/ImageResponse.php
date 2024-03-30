@@ -15,8 +15,6 @@ use Psr\Http\Message\ResponseInterface;
 use function getimagesizefromstring;
 use function array_change_key_case;
 
-use const CASE_LOWER;
-
 readonly class ImageResponse
 {
     private string $body;
