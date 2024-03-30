@@ -16,6 +16,7 @@
     "require": {
         "ramsey/uuid": "^4.7",
         "psr/log": "^3.0",
-        "psr/http-client": "^1.0"
+        "psr/http-client": "^1.0",
+        "guzzlehttp/guzzle": "^7.8"
     }
 }

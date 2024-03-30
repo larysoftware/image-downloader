@@ -6,19 +6,17 @@ namespace Lssoftware\ImageDownloader\Service;
 
 use Lssoftware\ImageDownloader\Dto\ImageResponse;
 use Lssoftware\ImageDownloader\Dto\ContentFile;
-use Psr\Http\Client\ClientExceptionInterface;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\Client;
 
 readonly class HttpDownloader
 {
-    public function __construct(private ClientInterface $client)
+    public function __construct(private Client $client)
     {
     }
 
-    public function get(RequestInterface $request): ContentFile
+    public function get(string $path): ContentFile
     {
-        $response = $this->request($request);
+        $response = $this->request($path);
         return new ContentFile(
             $response->getImageContent(),
             $response->getExtension(),
@@ -27,11 +25,8 @@ readonly class HttpDownloader
         );
     }
 
-    /**
-     * @throws ClientExceptionInterface
-     */
-    private function request(RequestInterface $request): ImageResponse
+    private function request(string $path): ImageResponse
     {
-        return new ImageResponse($this->client->sendRequest($request));
+        return new ImageResponse($this->client->request('GET', $path));
     }
 }
