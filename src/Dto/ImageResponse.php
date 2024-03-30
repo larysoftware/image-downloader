@@ -18,8 +18,8 @@ readonly class ImageResponse
 {
     private string $body;
     private array $headers;
-    private const CONTENT_TYPE_HEADER = 'content-type';
-    private const CONTENT_LENGTH_HEADER = 'content-length';
+    private const CONTENT_TYPE_HEADER = 'Content-Type';
+    private const CONTENT_LENGTH_HEADER = 'Content-Length';
 
     private const MAP = [
         'image/aces' => 'exr',
